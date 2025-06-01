@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact me for your project needs">
-  <title>OMKAR DIVEKAR| Contact</title>
+  <title>OMKAR DIVEKAR | Contact</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Add Firebase SDK -->
+   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
 </head>
 <body>
   <header class="header">
@@ -55,7 +58,7 @@
       </div>
 
       <div class="contact-container">
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/omkardivekar15@gmail.com" method="POST">
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" required>
@@ -64,6 +67,11 @@
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" required>
           </div>
           
           <div class="form-group">
@@ -77,6 +85,7 @@
           </div>
           
           <button type="submit" class="btn btn-submit">Send Message</button>
+          <div id="formMessage" class="form-message"></div>
         </form>
 
         <div class="contact-info">
@@ -99,7 +108,7 @@
             </svg>
             <div>
               <h4>Phone</h4>
-              <a href="tel:+1234567890">+91 9769425755</a>
+              <a href="tel:+919769425755">+91 9769425755</a>
             </div>
           </div>
           
@@ -115,19 +124,18 @@
           </div>
           
           <div class="social-links">
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/omkar-divekar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a href="#" aria-label="GitHub">
+            <a href="https://github.com/o-divekar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
             </a>
-            
           </div>
         </div>
       </div>
@@ -153,49 +161,37 @@
         <div class="footer-social">
           <h4>Connect</h4>
           <div class="social-icons">
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/omkar-divekar" 
-       target="_blank"
-       rel="noopener noreferrer nofollow"
-       aria-label="LinkedIn">
-       <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-        <rect x="2" y="9" width="4" height="12"></rect>
-        <circle cx="4" cy="4" r="2"></circle>
-      </svg>
-    </a>
-    
-    <!-- GitHub -->
-    <a href="https://github.com/o-divekar"
-       target="_blank"
-       rel="noopener noreferrer nofollow"
-       aria-label="GitHub">
-      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-      </svg>
-    </a>
-    
-    <!-- Email (Gmail version) -->
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=omkardivekar15@gmail.com&su=Portfolio%20Inquiry"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Email">
-        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-        <polyline points="22,6 12,13 2,6"></polyline>
-      </svg>
-    </a>
-  </div>
+            <a href="https://www.linkedin.com/in/omkar-divekar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://github.com/o-divekar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:omkardivekar15@gmail.com" aria-label="Email">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 MyPortfolio. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> MyPortfolio. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
-  <script src="js/main.js" defer></script>
+  
   <div class="cursor-follower"></div>
   <div class="cursor-trail"></div>
+  <script src="js/main.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/contact-form.js"></script>
 </body>
 </html>
